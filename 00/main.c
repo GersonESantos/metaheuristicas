@@ -28,7 +28,7 @@ void linha();
 int main(int argc, char *argv[]) {
     struct matriz m;
 
-    ler_arquivo(&m, "/Users/gleissonassis/Dropbox/CH/instancias/10_01_25.txt");
+    ler_arquivo(&m, "C:\Repo2026\metaheuristicas\00/10_01_25.txt");
     imprimir_matriz(m);
 
     int *solucao_inicial = malloc((m.numero_elementos + 1) * sizeof(int));
