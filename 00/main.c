@@ -5,6 +5,7 @@
 #define TRUE 1
 #define FALSE 0
 
+
 struct matriz {
     int numero_elementos;
     int** elementos;
@@ -15,42 +16,20 @@ struct nodo {
     int valor;
 };
 
-void ler_arquivo(struct matriz*, char*);
-int calcular_custo(struct matriz, int*);
-void construir_caminho(struct matriz, int*);
-void construir_caminho_aleatorio(struct matriz, int*);
-
-void imprimir_caminho(int, int*);
-
-void imprimir_matriz(struct matriz);
+// Protótipos das funções
+void ler_arquivo(struct matriz* m, char* arquivo);
+void imprimir_matriz(struct matriz m);
 void linha();
 
-int main(int argc, char *argv[]) {
+int main() {
     struct matriz m;
-
     ler_arquivo(&m, "C:/Repo2026/metaheuristicas/00/10_01_25.txt");
     imprimir_matriz(m);
-
-    int *solucao_inicial = malloc((m.numero_elementos + 1) * sizeof(int));
-    construir_caminho(m, solucao_inicial);
-    printf("Solucao inicial: ");
-    imprimir_caminho(m.numero_elementos + 1, solucao_inicial);
-
-    int custo_solucao_inicial = calcular_custo(m, solucao_inicial);
-    printf("Custo solução inicial: %d", custo_solucao_inicial);
-
-    srand(1);
-
-    linha();
-    int *solucao_aleatoria = malloc((m.numero_elementos + 1) * sizeof(int));
-    for(int i = 0; i < 10; i++) {
-        construir_caminho_aleatorio(m, solucao_aleatoria);
-        int custo_solucao_aleatoria = calcular_custo(m, solucao_aleatoria);
-        printf("Solucao aleatória: ");
-        imprimir_caminho(m.numero_elementos + 1, solucao_aleatoria);
-        printf("Custo solução aleatória: %d\n", custo_solucao_aleatoria);
-    }
+    return 0;
 }
+
+
+
 //-----------------------------------------------------------------------------
 
 void ler_arquivo(struct matriz* m, char* arquivo) {
